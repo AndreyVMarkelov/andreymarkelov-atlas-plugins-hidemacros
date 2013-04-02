@@ -1,0 +1,29 @@
+<input type="checkbox" onClick="refreshHider${id}();" id="${id}">${label}</input>
+#if($blockName)
+<script language="javascript">
+    AJS.$(document).ready(function() {
+        refreshHider${id}();
+    });
+
+    function refreshHider${id}() {
+        var checked = AJS.$("#${id}").is(':checked');
+
+        #if($isId)
+            var panel = AJS.$("${blockName}");
+            #if(${hideOnCheck})
+            if (checked) { AJS.$(panel).hide(); } else { AJS.$(panel).show(); }
+            #else
+            if (checked) { AJS.$(panel).show(); } else { AJS.$(panel).hide(); }
+            #end
+        #else
+        AJS.$("${blockName}").each(function(index) {
+            #if(${hideOnCheck})
+            if (checked) { AJS.$(this).hide(); } else { AJS.$(this).show(); }
+            #else
+            if (checked) { AJS.$(this).show(); } else { AJS.$(this).hide(); }
+            #end
+        });
+        #end
+    }
+</script>
+#end

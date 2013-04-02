@@ -1,0 +1,55 @@
+<atlassian-plugin key="${groupId}.${artifactId}" name="${name}" pluginsVersion="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="Andrey Markelov" url="http://ru.linkedin.com/in/andreymarkelov/"/>
+        <param name="plugin-icon">images/utils.png</param>
+        <param name="plugin-logo">images/AM.JPG</param>
+    </plugin-info>
+
+    <resource key="icons" name="icons/" type="download" location="images"/>
+
+    <component key="panelMacroParameterParser" name="Parameter Support for panel" class="ru.andreymarkelov.atlas.plugins.PanelMacroParameterParser"/>
+    <component key="hiderMacroParameterParser" name="Parameter Support for hider" class="ru.andreymarkelov.atlas.plugins.HiderMacroParameterParser"/>
+
+    <xhtml-macro key="ru.andreymarkelov.atlas.plugins.blockhider"
+                 name="blockhider"
+                 class="ru.andreymarkelov.atlas.plugins.BlockHiderMacro"
+                 icon="/download/resources/ru.andreymarkelov.atlas.plugins.hidemacros/icons/hider.png">
+        <description>This macros allows to hide HTML element by "id".</description>
+
+        <device-type>mobile</device-type>
+        <category name="formatting"/>
+
+        <parameters>
+            <parameter name="label" type="string"/>
+            <parameter name="blockName" type="string"/>
+            <parameter name="hideOnCheck" type="boolean" default="false"/>
+        </parameters>
+
+        <resource type="velocity" name="help" location="/templates/blockhider-help.vm">
+            <param name="help-section" value="headings"/>
+        </resource>
+        <resource type="i18n" name="i18n" location="/i18n/hidemacros"/>
+    </xhtml-macro>
+
+    <xhtml-macro key="ru.andreymarkelov.atlas.plugins.namedpanel"
+                 name="namedpanel"
+                 class="ru.andreymarkelov.atlas.plugins.NamedPanelMacro"
+                 icon="/download/resources/ru.andreymarkelov.atlas.plugins.hidemacros/icons/named.png">
+        <description>This macros just wraps content onto "div" tag with name.</description>
+
+        <device-type>mobile</device-type>
+        <category name="formatting"/>
+
+        <parameters>
+            <parameter name="blockName" type="string"/>
+            <parameter name="className" type="string"/>
+        </parameters>
+
+        <resource type="velocity" name="help" location="/templates/namedpanel-help.vm">
+            <param name="help-section" value="headings"/>
+        </resource>
+        <resource type="i18n" name="i18n" location="/i18n/hidemacros"/>
+    </xhtml-macro>
+</atlassian-plugin>
