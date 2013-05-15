@@ -53,7 +53,7 @@ public class BlockHiderMacro
         contextMap.put("blockName", cssSelector);
         contextMap.put("isId", isId);
         contextMap.put("hideOnCheck", params.getHideOnCheck());
-        contextMap.put("id", "hider" + Utils.getCurrentMills());
+        contextMap.put("id", "hider" + Counter.getValue());
 
         return VelocityUtils.getRenderedTemplate(TEMPLATE, contextMap);
     }
